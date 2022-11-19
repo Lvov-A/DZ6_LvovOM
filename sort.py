@@ -66,10 +66,14 @@ def normalize(name_file):
     name_file = re.sub(r'\W', '_', name_file) + ext[0]
     return name_file  
 
-if __name__ == '__main__':
-    if sys.argv[1]:
-        folder_for_scan = Path(sys.argv[1])
-        base_folders(folder_for_scan)
-        scan(folder_for_scan)
-        rem_fold(FOLDERS)
+def srt_folder(folder_for_scan):
+    base_folders(folder_for_scan)
+    scan(folder_for_scan)
+    rem_fold(FOLDERS)
 
+if __name__ == '__main__':
+    try:
+        folder_for_scan = Path(sys.argv[1])
+        srt_folder(folder_for_scan)
+    except IndexError:
+        print("Вы не ввели путь к папке сортировке")   
