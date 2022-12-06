@@ -6,6 +6,7 @@ from shutil import move
 import shutil
 import re
 
+folder_for_scan = None
 FOLDERS = []
 CYRILLIC_SYMBOLS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ'
 TRANSLATION = ("a", "b", "v", "g", "d", "e", "e", "j", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u",
@@ -71,9 +72,13 @@ def srt_folder(folder_for_scan):
     scan(folder_for_scan)
     rem_fold(FOLDERS)
 
-if __name__ == '__main__':
+def start():
+    global folder_for_scan
     try:
         folder_for_scan = Path(sys.argv[1])
         srt_folder(folder_for_scan)
     except IndexError:
-        print("Вы не ввели путь к папке сортировке")   
+        print("Вы не ввели путь к папке сортировке")
+  
+if __name__ == '__main__':
+    start()
